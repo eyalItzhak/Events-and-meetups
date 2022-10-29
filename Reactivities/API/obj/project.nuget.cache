@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "oOIaSaDNaeq9Mw8dD5oCjh6yMlgp/GjbCHleKCxxQWqMJnZPta2zGDk6MraviZUlrZXd7oiH7f6YQrUUy2/NYA==",
+  "dgSpecHash": "pdcyXM4GbxqPRq/lVgtm49wFt4H8I2kfoa3kWhjLdnLTawMs+xtn9u4HhYcSxNAxRwQCXFjyP92ygjVhzRIA+g==",
   "success": true,
-  "projectFilePath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/API.csproj",
+  "projectFilePath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/API.csproj",
   "expectedPackageFiles": [
+    "/home/eyal/.nuget/packages/automapper/12.0.0/automapper.12.0.0.nupkg.sha512",
+    "/home/eyal/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "/home/eyal/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/home/eyal/.nuget/packages/mediatr/11.0.0/mediatr.11.0.0.nupkg.sha512",
+    "/home/eyal/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/home/eyal/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.0.0/mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "/home/eyal/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/eyal/.nuget/packages/microsoft.data.sqlite.core/6.0.10/microsoft.data.sqlite.core.6.0.10.nupkg.sha512",
     "/home/eyal/.nuget/packages/microsoft.entityframeworkcore/6.0.10/microsoft.entityframeworkcore.6.0.10.nupkg.sha512",
     "/home/eyal/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.10/microsoft.entityframeworkcore.abstractions.6.0.10.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/API.csproj": {}
+    "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/API.csproj": {}
   },
   "projects": {
-    "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/API.csproj": {
+    "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/API.csproj",
+        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/API.csproj",
+        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/API.csproj",
         "packagesPath": "/home/eyal/.nuget/packages/",
-        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/API/obj/",
+        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/eyal/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/Application.csproj": {
-                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/Application.csproj"
+              "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/Application.csproj": {
+                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/Application.csproj"
               }
             }
           }
@@ -42,6 +42,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -75,14 +83,14 @@
         }
       }
     },
-    "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/Application.csproj": {
+    "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/Application.csproj",
+        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/Application.csproj",
         "projectName": "Application",
-        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/Application.csproj",
+        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/Application.csproj",
         "packagesPath": "/home/eyal/.nuget/packages/",
-        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Application/obj/",
+        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/eyal/.nuget/NuGet/NuGet.Config"
@@ -97,11 +105,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj": {
-                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj"
+              "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj": {
+                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj"
               },
-              "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/Persistence.csproj": {
-                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/Persistence.csproj"
+              "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/Persistence.csproj": {
+                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/Persistence.csproj"
               }
             }
           }
@@ -115,6 +123,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -134,14 +152,14 @@
         }
       }
     },
-    "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj": {
+    "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj",
+        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj",
+        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj",
         "packagesPath": "/home/eyal/.nuget/packages/",
-        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/obj/",
+        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/eyal/.nuget/NuGet/NuGet.Config"
@@ -186,14 +204,14 @@
         }
       }
     },
-    "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/Persistence.csproj": {
+    "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/Persistence.csproj",
+        "projectUniqueName": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/Persistence.csproj",
+        "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/Persistence.csproj",
         "packagesPath": "/home/eyal/.nuget/packages/",
-        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Persistence/obj/",
+        "outputPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Persistence/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/eyal/.nuget/NuGet/NuGet.Config"
@@ -208,8 +226,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj": {
-                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups-main/Reactivities/Domain/Domain.csproj"
+              "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj": {
+                "projectPath": "/home/eyal/Desktop/projects/Events-and-meetups/Reactivities/Domain/Domain.csproj"
               }
             }
           }
