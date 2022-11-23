@@ -1,41 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Icon, Item, ItemGroup, Segment } from 'semantic-ui-react';
+import { Button, Icon, Item, Segment } from 'semantic-ui-react';
 import { Activity } from '../../../app/models/activity';
-// import { useStore } from '../../../app/stores/store';
-
 
 interface Props {
     activity: Activity
 }
 
-
 export default function ActivityListItem({ activity }: Props) {
-
-    // const { activityStore } = useStore();
-    // const { deleteActivity, loading } = activityStore;
-
-    // const [target, setTarget] = useState('');
-
-    // function handleActivityDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
-    //     setTarget(e.currentTarget.name);
-    //     deleteActivity(id);
-    // }
-
-
 
     return (
         <Segment.Group>
             <Segment>
-                <ItemGroup>
+                <Item.Group>
                     <Item>
                         <Item.Image size='tiny' circular src='/assets/user.png' />
-                        <Item.Header as={Link} to={`/activities/${activity.id}`}>
-                            {activity.title}
-                        </Item.Header>
-                        <Item.Description>Hosted by Eyal</Item.Description>
+                        <Item.Content>
+                            <Item.Header as={Link} to={`/activities/${activity.id}`}>
+                                {activity.title}
+                            </Item.Header>
+                            <Item.Description>Hosted by Bob</Item.Description>
+                        </Item.Content>
                     </Item>
-                </ItemGroup>
+                </Item.Group>
             </Segment>
             <Segment>
                 <span>
@@ -48,7 +35,7 @@ export default function ActivityListItem({ activity }: Props) {
             </Segment>
             <Segment clearing>
                 <span>{activity.description}</span>
-                <Button
+                <Button 
                     as={Link}
                     to={`/activities/${activity.id}`}
                     color='teal'
@@ -56,8 +43,6 @@ export default function ActivityListItem({ activity }: Props) {
                     content='View'
                 />
             </Segment>
-
         </Segment.Group>
     )
-
 }

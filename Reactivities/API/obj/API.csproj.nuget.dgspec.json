@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj": {}
+    "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj": {
+    "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Eyal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\obj\\",
+        "outputPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,11 +30,11 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\Application.csproj"
+              "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\Application.csproj"
               }
             }
           }
@@ -46,26 +46,32 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
             },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[5.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[5.6.3, )"
             }
           },
           "imports": [
@@ -91,14 +97,14 @@
         }
       }
     },
-    "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\Application.csproj": {
+    "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Eyal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Application\\obj\\",
+        "outputPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -109,7 +115,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -117,14 +123,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj"
+              "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\Persistence.csproj"
+              "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -136,16 +142,20 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[8.1.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.3.0, )"
             },
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -168,14 +178,14 @@
         }
       }
     },
-    "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj": {
+    "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Eyal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -186,7 +196,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -194,8 +204,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -206,8 +216,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "imports": [
             "net461",
             "net462",
@@ -228,14 +238,14 @@
         }
       }
     },
-    "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\Persistence.csproj": {
+    "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\Persistence.csproj",
+        "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\Persistence.csproj",
         "packagesPath": "C:\\Users\\Eyal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Persistence\\obj\\",
+        "outputPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -246,7 +256,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -254,11 +264,11 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\Domain\\Domain.csproj"
+              "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Eyal\\Desktop\\New folder (5)\\Reactivities-c7ab2ddfa0e6af0aba41e466e10fde534153d534\\Domain\\Domain.csproj"
               }
             }
           }
@@ -270,12 +280,12 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

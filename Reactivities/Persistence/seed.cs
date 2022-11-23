@@ -12,7 +12,7 @@ namespace Persistence
         {
             if (context.Activities.Any()) return;
             
-            var activities = new List<Activity> //activiti demo insert
+            var activities = new List<Activity>
             {
                 new Activity
                 {

@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
@@ -19,21 +17,21 @@ namespace API
 
             using var scope = host.Services.CreateScope();
 
-            var Services = scope.ServiceProvider;
+            var services = scope.ServiceProvider;
 
-            try //run migtaion if we dont have database
+            try 
             {
-                var context = Services.GetRequiredService<DataContext>(); 
+                var context = services.GetRequiredService<DataContext>();
                 await context.Database.MigrateAsync();
                 await Seed.SeedData(context);
             }
             catch (Exception ex)
             {
-                var logger = Services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex,"an error occured during migration"); //Data migration is the process of moving data from one location to another, one format to another, or one application to another. 
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occured during migraiton");
             }
 
-            await host.RunAsync(); //start the aplication!
+            await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

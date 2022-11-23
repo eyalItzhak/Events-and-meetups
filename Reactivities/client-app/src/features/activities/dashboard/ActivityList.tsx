@@ -1,4 +1,3 @@
-
 import { observer } from 'mobx-react-lite';
 import React, { Fragment } from 'react';
 import { Header } from 'semantic-ui-react';
@@ -8,8 +7,6 @@ import ActivityListItem from './ActivityListItem';
 export default observer(function ActivityList() {
     const { activityStore } = useStore();
     const { groupedActivities } = activityStore;
-
-
 
     return (
         <>
@@ -22,7 +19,6 @@ export default observer(function ActivityList() {
                         <ActivityListItem key={activity.id} activity={activity} />
                     ))}
                 </Fragment>
-
             ))}
         </>
 

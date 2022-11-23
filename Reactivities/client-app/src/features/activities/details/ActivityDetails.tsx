@@ -1,37 +1,34 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import {useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
-import ActivityDetailsChat from './ActivityDetailsChat';
-import ActivityDetailsHeader from './ActivityDetailsHeader';
-import ActivityDetailsInfo from './ActivityDetailsInfo';
-import ActivityDetailsSideBar from './ActivityDetailsSideBar';
+import ActivityDetailedChat from './ActivityDetailedChat';
+import ActivityDetailedInfo from './ActivityDetailedInfo';
+import ActivityDetailedSidebar from './ActivityDetailedSidebar';
+import ActivityDetailedHeader from './ActivityDetaledHeader';
 
 export default observer(function ActivityDetails() {
-    const { activityStore } = useStore();
-    const { selectedActivity: activity, loadActivity, loadingInitial } = activityStore;
-    const { id } = useParams<{ id: string }>();
+    const {activityStore} = useStore();
+    const {selectedActivity: activity, loadActivity, loadingInitial} = activityStore;
+    const {id} = useParams<{id: string}>();
 
     useEffect(() => {
-        console.log(id)
-        if (id) loadActivity(id)
+        if (id) loadActivity(id);
+    }, [id, loadActivity]);
 
-    }, [id, loadActivity])
-
-    console.log(loadingInitial || !activity)
     if (loadingInitial || !activity) return <LoadingComponent />;
 
     return (
         <Grid>
             <Grid.Column width={10}>
-                <ActivityDetailsHeader activity={activity}/>
-                <ActivityDetailsInfo activity={activity}/>
-                <ActivityDetailsChat/>
+                <ActivityDetailedHeader activity={activity} />
+                <ActivityDetailedInfo activity={activity} />
+                <ActivityDetailedChat />
             </Grid.Column>
             <Grid.Column width={6}>
-                <ActivityDetailsSideBar/>
+                <ActivityDetailedSidebar />
             </Grid.Column>
         </Grid>
     )

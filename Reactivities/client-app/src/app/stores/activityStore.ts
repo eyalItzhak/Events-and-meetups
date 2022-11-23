@@ -22,11 +22,10 @@ export default class ActivityStore {
         return Object.entries(
             this.activitiesByDate.reduce((activities, activity) => {
                 const date = activity.date;
-                activities[date] = activities[date] ? [...activities[date], activity] : [activity]; //if we have the activity we add to list else we make new list with activity
-                return activities
-            }, {} as { [key: string]: Activity[] })
+                activities[date] = activities[date] ? [...activities[date], activity] : [activity];
+                return activities;
+            }, {} as {[key: string]: Activity[]})
         )
-
     }
 
     loadActivities = async () => {
@@ -56,12 +55,11 @@ export default class ActivityStore {
                 runInAction(() => {
                     this.selectedActivity = activity;
                 })
-
-                this.setLoadingInitial(false)
-                return activity
+                this.setLoadingInitial(false);
+                return activity;
             } catch (error) {
-                console.log(error)
-                this.setLoadingInitial(false)
+                console.log(error);
+                this.setLoadingInitial(false);
             }
         }
     }
@@ -78,7 +76,6 @@ export default class ActivityStore {
     setLoadingInitial = (state: boolean) => {
         this.loadingInitial = state;
     }
-
 
     createActivity = async (activity: Activity) => {
         this.loading = true;

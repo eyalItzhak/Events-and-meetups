@@ -10,9 +10,8 @@ export default observer(function ActivityForm() {
     const history = useHistory();
     const {activityStore} = useStore();
     const {createActivity, updateActivity, 
-          loading,loadActivity ,loadingInitial} = activityStore;
-
-    const {id} = useParams<{id : string }>();
+            loading, loadActivity, loadingInitial} = activityStore;
+    const {id} = useParams<{id: string}>();
 
     const [activity, setActivity] = useState({
         id: '',
@@ -24,22 +23,20 @@ export default observer(function ActivityForm() {
         venue: ''
     });
 
-    useEffect(()=>{
-        if(id) loadActivity(id).then(activity => setActivity(activity!)) //setActivity make re render again => sec time we dont render becuse depedency ([id,loadActivity])
-    },[id,loadActivity])
-
+    useEffect(() => {
+        if (id) loadActivity(id).then(activity => setActivity(activity!))
+    }, [id, loadActivity]);
 
     function handleSubmit() {
-        if(activity.id.length===0) {
-            let newActivity ={
+        if (activity.id.length === 0) {
+            let newActivity = {
                 ...activity,
-                id :uuid()
+                id: uuid()
             };
-           createActivity(newActivity).then(()=>history.push(`/activities/${newActivity.id}`))
-        }else{
-            updateActivity(activity).then(()=>history.push(`/activities/${activity.id}`))
+            createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`))
+        } else {
+            updateActivity(activity).then(() => history.push(`/activities/${activity.id}`))
         }
-      
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -47,7 +44,7 @@ export default observer(function ActivityForm() {
         setActivity({...activity, [name]: value})
     }
 
-    if (loadingInitial) return <LoadingComponent content = "Loading activity..." />
+    if (loadingInitial) return <LoadingComponent content='Loading activity...' />
 
     return (
         <Segment clearing>
@@ -59,7 +56,7 @@ export default observer(function ActivityForm() {
                 <Form.Input placeholder='City' value={activity.city} name='city' onChange={handleInputChange}/>
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' onChange={handleInputChange}/>
                 <Button loading={loading} floated='right' positive type='submit' content='Submit' />
-                <Button as={Link} to="/activities" floated='right' type='button' content='Cancel' />
+                <Button as={Link} to='/activities' floated='right' type='button' content='Cancel' />
             </Form>
         </Segment>
     )
