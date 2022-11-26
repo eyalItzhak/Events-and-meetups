@@ -39,6 +39,7 @@ namespace API
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
             });
             services.AddApplicationServices(_config);
+            services.AddIdentityServices(_config); //take care of the config of identity in our app
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
