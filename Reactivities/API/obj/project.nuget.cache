@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YtmizfjcedFQYyygCkRkqrD0NZc/i6AI17uricRVsHjfmgto3aY7+GHh5DsWqU6cHszWXm9aE3Ip/H3G99nbpw==",
+  "dgSpecHash": "ejTS0IeQKv2ZAcQc6AZo5+6r/mc2l2UU2Ijk7g7nK4AKTYIFNr8RdiuEJtQb4c8I3bbMhZEKAgX15Pt9cmzV6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Users\\Eyal\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
-    "C:\\Users\\Eyal\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.0\\microsoft.aspnetcore.authentication.jwtbearer.5.0.0.nupkg.sha512",
+    "C:\\Users\\Eyal\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.0\\microsoft.aspnetcore.authentication.openidconnect.5.0.0.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.1\\microsoft.aspnetcore.cryptography.internal.5.0.1.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.1\\microsoft.aspnetcore.cryptography.keyderivation.5.0.1.nupkg.sha512",
