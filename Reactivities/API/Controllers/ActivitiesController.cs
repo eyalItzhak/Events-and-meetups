@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
-{
+{   
+    [AllowAnonymous] //fix for now for the app will work
     public class ActivitiesController : BaseApiController
     {
         [HttpGet]
