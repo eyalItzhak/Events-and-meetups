@@ -6,11 +6,11 @@ namespace Persistence
 {
     public class DataContext : IdentityDbContext<AppUser>
     {
-        public DataContext(DbContextOptions options) : base(options)
+        public DataContext(DbContextOptions options) : base(options) //base is the consructor of IdentityDbContext
         {
         }
 
-        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Activity> Activities { get; set; } //the name of the table we create
     }
 }
 

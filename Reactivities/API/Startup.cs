@@ -28,7 +28,7 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
-        public Startup(IConfiguration config)
+        public Startup(IConfiguration config) //get our configration to our app forom appsettings.Development and more cofig fils...
         {
             _config = config;
         }
@@ -43,8 +43,10 @@ namespace API
             }).AddFluentValidation(config =>
             {
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
-            });
-            services.AddApplicationServices(_config);
+            }); //add services to our api Controllers
+
+            services.AddApplicationServices(_config); //Swagger
+
             services.AddIdentityServices(_config); //take care of the config of identity in our app
         }
 
@@ -61,7 +63,7 @@ namespace API
 
             // app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting(); 
 
             app.UseCors("CorsPolicy");
 
