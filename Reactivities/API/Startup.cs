@@ -28,7 +28,7 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
-        public Startup(IConfiguration config) //get our configration to our app forom appsettings.Development and more cofig fils...
+        public Startup(IConfiguration config)
         {
             _config = config;
         }
@@ -36,18 +36,17 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(opt =>
+            services.AddControllers(opt => 
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
-            }).AddFluentValidation(config =>
+            })
+                .AddFluentValidation(config => 
             {
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
-            }); //add services to our api Controllers
-
-            services.AddApplicationServices(_config); //Swagger
-
-            services.AddIdentityServices(_config); //take care of the config of identity in our app
+            });
+            services.AddApplicationServices(_config);
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,12 +62,11 @@ namespace API
 
             // app.UseHttpsRedirection();
 
-            app.UseRouting(); 
+            app.UseRouting();
 
             app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

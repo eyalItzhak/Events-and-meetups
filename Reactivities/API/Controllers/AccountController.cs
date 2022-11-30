@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTOs;
@@ -15,15 +12,14 @@ namespace API.Controllers
 {
     [AllowAnonymous]
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-
         private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
         public AccountController(UserManager<AppUser> userManager,
-         SignInManager<AppUser> signInManager, TokenService tokenService)
+        SignInManager<AppUser> signInManager, TokenService tokenService) //the service that we can used it in our app
         {
             _tokenService = tokenService;
             _signInManager = signInManager;
@@ -37,7 +33,7 @@ namespace API.Controllers
 
             if (user == null) return Unauthorized();
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.password, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if (result.Succeeded)
             {
@@ -57,7 +53,7 @@ namespace API.Controllers
             }
             if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
             {
-                ModelState.AddModelError("username", "username taken");
+                ModelState.AddModelError("username", "Username taken");
                 return ValidationProblem();
             }
 
@@ -68,20 +64,22 @@ namespace API.Controllers
                 UserName = registerDto.Username
             };
 
-            var result = await _userManager.CreateAsync(user, registerDto.password); //save the user in the db
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            if (result.Succeeded) //retrun to user token
+            if (result.Succeeded)
             {
                 return CreateUserObject(user);
             }
 
-            return BadRequest("problem registering user");
+            return BadRequest("Problem registering user");
         }
+
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email)); //get user claim use his email. the user sent the token when make the rquest
+
             return CreateUserObject(user);
         }
 
@@ -91,10 +89,9 @@ namespace API.Controllers
             {
                 DisplayName = user.DisplayName,
                 Image = null,
-                Token = _tokenService.CreateToken(user),
+                Token = _tokenService.CreateToken(user), //use servic of _tokenService and create token for our user...
                 Username = user.UserName
             };
         }
-
     }
 }
