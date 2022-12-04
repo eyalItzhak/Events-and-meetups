@@ -12,15 +12,15 @@ export default class UserStore {
     }
 
     get isLoggedIn() {
-        return !!this.user
+        return !!this.user;
     }
 
     login = async (creds: UserFormValues) => {
         try {
             const user = await agent.Account.login(creds);
-            store.commonStore.setToken(user.token); //update the token on the browser
-            runInAction(() => this.user = user); //runInAction used becuse any modification to the state must happen inside of an action.
-            history.push('/activities')
+            store.commonStore.setToken(user.token);
+            runInAction(() => this.user = user);
+            history.push('/activities');
             store.modalStore.closeModal();
         } catch (error) {
             throw error;
@@ -28,10 +28,10 @@ export default class UserStore {
     }
 
     logout = () => {
-        store.commonStore.setToken(null); //remove token from the store
-        window.localStorage.removeItem('jwt'); //remove token from browser
-        this.user = null
-        history.push('/')
+        store.commonStore.setToken(null);
+        window.localStorage.removeItem('jwt');
+        this.user = null;
+        history.push('/');
     }
 
     getUser = async () => {
@@ -43,16 +43,15 @@ export default class UserStore {
         }
     }
 
-    register = async(creds :UserFormValues)=>{
+    register = async (creds: UserFormValues) => {
         try {
             const user = await agent.Account.register(creds);
-            store.commonStore.setToken(user.token); 
+            store.commonStore.setToken(user.token);
             runInAction(() => this.user = user);
-            history.push('/activities')
+            history.push('/activities');
             store.modalStore.closeModal();
         } catch (error) {
             throw error;
         }
     }
-
 }
