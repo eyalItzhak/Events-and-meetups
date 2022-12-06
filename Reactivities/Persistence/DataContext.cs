@@ -10,8 +10,9 @@ namespace Persistence
         {
         }
 
-        public DbSet<Activity> Activities { get; set; }
-        public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
+        public DbSet<Activity> Activities { get; set; } //cerate the db
+        public DbSet<ActivityAttendee> ActivityAttendees { get; set; } //cerate the db
+        public DbSet<Photo> Photos { get; set; } //cerate the db
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,4 +33,4 @@ namespace Persistence
     }
 }
 
-//dotnet ef migrations add IdentityAdded -p Persistence -s API  (migration  command =>create by this class and domain folder) 
+//dotnet ef migrations add IdentityAdded -p Persistence -s API  (migration  command =>create by this class and domain folder => "IdentityAdded" is the name when make the migration) 
