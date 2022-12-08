@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +14,7 @@ namespace Infrastructure.Security
     {
         private readonly DataContext _dbContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public IsHostRequirementHandler(DataContext dbContext, 
-            IHttpContextAccessor httpContextAccessor)
+        public IsHostRequirementHandler(DataContext dbContext, IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
             _dbContext = dbContext;
@@ -35,7 +31,7 @@ namespace Infrastructure.Security
 
             var attendee = _dbContext.ActivityAttendees
                 .AsNoTracking()
-                .SingleOrDefaultAsync(x => x.AppUserId == userId && x.ActivityId == activityId)
+                .FirstOrDefaultAsync(x => x.AppUserId == userId && x.ActivityId == activityId)
                 .Result;
 
             if (attendee == null) return Task.CompletedTask;

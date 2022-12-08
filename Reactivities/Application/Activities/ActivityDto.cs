@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-
-
-//same as acitivty class
+using Application.Profiles;
 
 namespace Application.Activities
 {

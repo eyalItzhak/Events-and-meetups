@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Core;
 using Application.Interfaces;
 using Domain;
@@ -17,22 +15,23 @@ namespace Application.Activities
             public Activity Activity { get; set; }
         }
 
-        public class CommandValidator : AbstractValidator<Command>
-        {
-            public CommandValidator()
-            {
-                RuleFor(x => x.Activity).SetValidator(new ActivityValidator());
-            }
-        }
-
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
+
             public Handler(DataContext context, IUserAccessor userAccessor)
             {
                 _userAccessor = userAccessor;
                 _context = context;
+            }
+
+            public class CommandValidator : AbstractValidator<Command>
+            {
+                public CommandValidator()
+                {
+                    RuleFor(x => x.Activity).SetValidator(new ActivityValidator());
+                }
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
@@ -47,7 +46,7 @@ namespace Application.Activities
                     IsHost = true
                 };
 
-                request.Activity.Attendees.Add(attendee); //add the new info
+                request.Activity.Attendees.Add(attendee);//add the new info
 
                 _context.Activities.Add(request.Activity);
 

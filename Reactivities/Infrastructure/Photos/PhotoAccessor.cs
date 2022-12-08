@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Photos;
 using CloudinaryDotNet;
@@ -22,9 +18,9 @@ namespace Infrastructure.Photos
                 config.Value.ApiKey,
                 config.Value.ApiSecret
             ); //make new scessen with account info
-
             _cloudinary = new Cloudinary(account); // crate the scessen
         }
+
         public async Task<PhotoUploadResult> AddPhoto(IFormFile file)
         {
             if (file.Length > 0)
@@ -35,7 +31,9 @@ namespace Infrastructure.Photos
                     File = new FileDescription(file.FileName, stream),
                     Transformation = new Transformation().Height(500).Width(500).Crop("fill")
                 };
+
                 var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+
                 if (uploadResult.Error != null)
                 {
                     throw new Exception(uploadResult.Error.Message);
@@ -46,13 +44,9 @@ namespace Infrastructure.Photos
                     PublicId = uploadResult.PublicId,
                     Url = uploadResult.SecureUrl.ToString()
                 };
-
-            }
-            else
-            {
-                return null;
             }
 
+            return null;
         }
 
         public async Task<string> DeletePhoto(string publicId)

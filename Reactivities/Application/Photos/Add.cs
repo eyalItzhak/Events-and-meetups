@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Core;
 using Application.Interfaces;
 using Domain;
@@ -17,48 +12,44 @@ namespace Application.Photos
     {
         public class Command : IRequest<Result<Photo>>
         {
-                public IFormFile File {get;set;}  //need to be call File!
+            public IFormFile File { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Result<Photo>>
         {
-        private readonly DataContext _context;
-        private readonly IPhotoAccessor _PhotoAccessor;
-        private readonly IUserAccessor _userAccessor; //get user by his claim (token)
+            private readonly DataContext _context;
+            private readonly IPhotoAccessor _photoAccessor;
+            private readonly IUserAccessor _userAccessor;
 
-            public Handler (DataContext context,IPhotoAccessor PhotoAccessor, IUserAccessor userAccessor  ){ //get the service that we will used here...
-            _userAccessor = userAccessor;
-            _PhotoAccessor = PhotoAccessor;
-            _context = context;
-
-            }
-            public async Task<Result<Photo>> Handle(Command request, CancellationToken cancellationToken) //what we do ...
+            public Handler(DataContext context, IPhotoAccessor photoAccessor, IUserAccessor userAccessor)
             {
-                var user =  await _context.Users.Include(p=>p.Photos) //get user collection of photos after locate the user...
-                .FirstOrDefaultAsync(x=>x.UserName == _userAccessor.GetUsername()); //get user from database from user token
-                
-                if (user == null) return  null;
+                _userAccessor = userAccessor;
+                _context = context;
+                _photoAccessor = photoAccessor;
+            }
 
-                var photoUploadResult = await _PhotoAccessor.AddPhoto(request.File); //try to upload photo 
+            public async Task<Result<Photo>> Handle(Command request, CancellationToken cancellationToken)
+            {
+                var photoUploadResult = await _photoAccessor.AddPhoto(request.File);
+                var user = await _context.Users.Include(p => p.Photos)
+                    .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
-                var photo = new Photo 
+                var photo = new Photo
                 {
                     Url = photoUploadResult.Url,
                     Id = photoUploadResult.PublicId
-                }; //update the url of the phto
+                };
 
-                //if first photo upload
-                if(!user.Photos.Any(x=>x.IsMain)) photo.IsMain =true;  //make main photo
+                if (!user.Photos.Any(x => x.IsMain)) photo.IsMain = true;
 
-                user.Photos.Add(photo); //add the photo to user
+                user.Photos.Add(photo);
 
-                var result = await _context.SaveChangesAsync()>0; //save our change in db
+                var result = await _context.SaveChangesAsync() > 0;
 
-                if(result) return Result<Photo>.Success(photo);  //scc
+                if (result) return Result<Photo>.Success(photo);
 
-                return Result<Photo>.Failure("problem adding photo"); //fail
-             }
+                return Result<Photo>.Failure("Problem adding photo");
+            }
         }
     }
-
 }

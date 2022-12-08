@@ -3,26 +3,21 @@ import { Profile } from "./profile";
 export interface Activity {
     id: string;
     title: string;
-    date: Date | null;
     description: string;
     category: string;
+    date: Date | null;
     city: string;
     venue: string;
-    hostUsername: string;
-    isCancelled: boolean;
-    isGoing: boolean;
-    isHost: boolean;
+    hostUsername?: string;
+    isCancelled?: boolean;
+    isGoing?: boolean;
+    isHost?: boolean
+    attendees?: Profile[]
     host?: Profile;
-    attendees: Profile[]
-  }
+}
 
-  export class Activity implements Activity {
-    constructor(init?: ActivityFormValues) {
-      Object.assign(this, init);
-    }
-  }
-
-  export class ActivityFormValues {
+export class ActivityFormValues
+  {
     id?: string = undefined;
     title: string = '';
     category: string = '';
@@ -31,7 +26,7 @@ export interface Activity {
     city: string = '';
     venue: string = '';
 
-    constructor(activity?: ActivityFormValues) {
+	  constructor(activity?: ActivityFormValues) {
       if (activity) {
         this.id = activity.id;
         this.title = activity.title;
@@ -41,5 +36,12 @@ export interface Activity {
         this.venue = activity.venue;
         this.city = activity.city;
       }
+    }
+
+  }
+
+  export class Activity implements Activity {
+    constructor(init?: ActivityFormValues) {
+      Object.assign(this, init);
     }
   }

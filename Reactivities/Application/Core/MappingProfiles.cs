@@ -1,4 +1,3 @@
-using System.Linq;
 using Application.Activities;
 using AutoMapper;
 using Domain;
@@ -7,7 +6,7 @@ namespace Application.Core
 {
     public class MappingProfiles : Profile
     {
-        public MappingProfiles() //<x, y> =>>> convert from object x to object y
+        public MappingProfiles()
         {
             CreateMap<Activity, Activity>();
             CreateMap<Activity, ActivityDto>()
@@ -17,11 +16,9 @@ namespace Application.Core
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
                 .ForMember(d => d.Username, o => o.MapFrom(s => s.AppUser.UserName))
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.AppUser.Bio))
-                .ForMember(d => d.Image,o=>o.MapFrom(s=> s.AppUser.Photos.FirstOrDefault(x=>x.IsMain).Url));
-
+                .ForMember(d => d.Image, o => o.MapFrom(s => s.AppUser.Photos.FirstOrDefault(x => x.IsMain).Url));
             CreateMap<AppUser, Profiles.Profile>()
-            .ForMember(d => d.Image,o=>o.MapFrom(s=> s.Photos.FirstOrDefault(x=>x.IsMain).Url));
-
-        }   
+                .ForMember(d => d.Image, s => s.MapFrom(o => o.Photos.FirstOrDefault(x => x.IsMain).Url));
+        }
     }
 }

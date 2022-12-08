@@ -1,6 +1,4 @@
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using API.DTOs;
 using API.Services;
 using Domain;
@@ -11,33 +9,30 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager,
-        SignInManager<AppUser> signInManager, TokenService tokenService) //the service that we can used it in our app
+        public AccountController(UserManager<AppUser> userManager, TokenService tokenService) //the service that we can used it in our app
         {
             _tokenService = tokenService;
-            _signInManager = signInManager;
             _userManager = userManager;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.Users.Include(p => p.Photos) //need to include his photos...
-            .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
+                .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
 
             if (user == null) return Unauthorized();
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
 
-            if (result.Succeeded)
+            if (result)
             {
                 return CreateUserObject(user);
             }
@@ -45,17 +40,19 @@ namespace API.Controllers
             return Unauthorized();
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
-            {
-                ModelState.AddModelError("email", "Email taken");
-                return ValidationProblem();
-            }
             if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
             {
                 ModelState.AddModelError("username", "Username taken");
+                return ValidationProblem();
+            }
+
+            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
+            {
+                ModelState.AddModelError("email", "Email taken");
                 return ValidationProblem();
             }
 
@@ -73,7 +70,7 @@ namespace API.Controllers
                 return CreateUserObject(user);
             }
 
-            return BadRequest("Problem registering user");
+            return BadRequest(result.Errors);
         }
 
         [Authorize]
@@ -81,8 +78,8 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var user = await _userManager.Users.Include(p => p.Photos)
-            .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email)); //get user claim use his email. the user sent the token when make the rquest
-
+                .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));  //get user claim use his email. the user sent the token when make the rquest
+                
             return CreateUserObject(user);
         }
 
@@ -92,7 +89,7 @@ namespace API.Controllers
             {
                 DisplayName = user.DisplayName,
                 Image = user?.Photos?.FirstOrDefault(x => x.IsMain)?.Url,
-                Token = _tokenService.CreateToken(user), //use servic of _tokenService and create token for our user...
+                Token = _tokenService.CreateToken(user),  //use servic of _tokenService and create token for our user...
                 Username = user.UserName
             };
         }
