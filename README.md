@@ -7,19 +7,19 @@ Web application for managing events and meetings.
 Some things have not yet been implemented, so not all features are currently working.
 Among the things that have been implemented:
 
-Creating databases for meetings and for users.
+1.Creating databases for meetings and for users.
 
-1.Registration and connection forms with Valdation.
+2.Registration and connection forms with Valdation.
 
-2.Event creation forms with Valdation.
+3.Event creation forms with Valdation.
 
-3.user session.
+4.user session.
 
-4.manage application state with mobx
+5.manage application state with mobx
 
-5.Setting up a .NET server
+6.Setting up a .NET server
 
-6.Management of problematic requests to the server
+7.Management of "problematic" requests
 
 and more...
 
