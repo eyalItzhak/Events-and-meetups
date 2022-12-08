@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Header, Segment, Image, Button } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
-import LoginForm from '../users/LoginForm';
+import LoginForm from '../users/loginForm';
 import RegisterForm from '../users/RegisterForm';
 
 export default observer(function HomePage() {
