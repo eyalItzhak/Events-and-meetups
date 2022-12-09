@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ga6gzyiAdQVo6R5aaDIlAvt8gyAut4onYX+C8ySAbFFBb10VRFCXO53xncogzrvlCvMbwjAoO0uoZzsE98SJtQ==",
+  "dgSpecHash": "VIAIn2UxHI+KjAd+i912AiQOh6M2HbGiRMOqelS3Y0CZ69ARk4H8w62iyN5C3m0uZ4IEDRsbh1jcS97dlHVngg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Eyal\\Desktop\\Reactivities-6d95d7812a4120f9ccebc3c681cc74d9a3383583\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Eyal\\Desktop\\projects\\Events-and-meetups\\Reactivities\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eyal\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Eyal\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
