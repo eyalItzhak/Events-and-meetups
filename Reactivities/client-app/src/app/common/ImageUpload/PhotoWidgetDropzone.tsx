@@ -1,15 +1,13 @@
-
 import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Header, Icon } from 'semantic-ui-react';
+import { Header, Icon } from 'semantic-ui-react'
 
 interface Props {
-    setFile: (files: any) => void;
+    setFiles: (files: any) => void;
 }
 
-export default function PhotoWidgetDropzone({ setFile }: Props) {
-
-    const dzStyle = {
+export default function PhotoWidgetDropzone({setFiles}: Props) {
+    const dzStyles = {
         border: 'dashed 3px #eee',
         borderColor: '#eee',
         borderRadius: '5px',
@@ -18,23 +16,22 @@ export default function PhotoWidgetDropzone({ setFile }: Props) {
         height: 200
     }
 
-    const dzActive = { //dzActive will ovride dzStyle props
+    const dzActive = {
         borderColor: 'green'
     }
 
-    const onDrop = useCallback(acceptedFiles => { //acceptedFiles is array of files...
-        setFile(acceptedFiles.map((file: any) => Object.assign(file, {
+    const onDrop = useCallback(acceptedFiles => {
+        setFiles(acceptedFiles.map((file: any) => Object.assign(file, {
             preview: URL.createObjectURL(file)
         })))
-    }, [setFile])
-
+    }, [setFiles])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     return (
-        <div {...getRootProps()} style={isDragActive ? { ...dzStyle, ...dzActive } : dzStyle}>
-            <input {...getInputProps()} />
+        <div {...getRootProps()} style={isDragActive ? {...dzStyles, ...dzActive} : dzStyles} >
+            <input {...getInputProps()} />  
             <Icon name='upload' size='huge' />
-            <Header content="Drop image here" />
+            <Header content='Drop image here' />
         </div>
     )
 }

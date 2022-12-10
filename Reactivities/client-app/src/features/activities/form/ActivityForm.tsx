@@ -7,11 +7,11 @@ import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import MyTextInput from '../../../app/common/form/myTextInput';
-import MyTextArea from '../../../app/common/form/myTextArea';
-import MySelectInput from '../../../app/common/form/mySelectInput';
+import MyTextInput from '../../../app/common/form/MyTextInput';
+import MyTextArea from '../../../app/common/form/MyTextArea';
+import MySelectInput from '../../../app/common/form/MySelectInput';
 import { categoryOptions } from '../../../app/common/options/categoryOptions';
-import MyDateInput from '../../../app/common/form/myDateInput';
+import MyDateInput from '../../../app/common/form/MyDateInput';
 import { ActivityFormValues } from '../../../app/models/activity';
 
 export default observer(function ActivityForm() {
