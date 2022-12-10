@@ -28,14 +28,13 @@ namespace Application.Comments
                 _mapper = mapper;
                 _context = context;
             }
-
             public async Task<Result<List<CommentDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var comments = await _context.Comments
-                    .Where(x => x.Activity.Id == request.ActivityId)
-                    .OrderByDescending(x => x.CreatedAt)
-                    .ProjectTo<CommentDto>(_mapper.ConfigurationProvider)
-                    .ToListAsync();
+                    .Where(x => x.Activity.Id == request.ActivityId) //get the Activity
+                    .OrderByDescending(x => x.CreatedAt) //order by thair date
+                    .ProjectTo<CommentDto>(_mapper.ConfigurationProvider) //to Dto...
+                    .ToListAsync();//make it list
 
                 return Result<List<CommentDto>>.Success(comments);
             }

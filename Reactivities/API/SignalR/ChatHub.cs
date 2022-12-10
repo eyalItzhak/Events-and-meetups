@@ -16,18 +16,18 @@ namespace API.SignalR
 
         public async Task SendComment(Create.Command command)
         {
-            var comment = await _mediator.Send(command);
-
-            await Clients.Group(command.ActivityId.ToString())
-                .SendAsync("ReceiveComment", comment.Value);
+            var comment = await _mediator.Send(command); //after comment save in our db
+            //sent evryone connected to the hub
+            await Clients.Group(command.ActivityId.ToString())  //set to the right group (by activity)
+                .SendAsync("ReceiveComment", comment.Value); //the name ReceiveComment => used from the client side?
         }
 
-        public override async Task OnConnectedAsync()
+        public override async Task OnConnectedAsync() //to join group
         {
-            var httpContext = Context.GetHttpContext();
-            var activityId = httpContext.Request.Query["activityId"];
-            await Groups.AddToGroupAsync(Context.ConnectionId, activityId);
-            var result = await _mediator.Send(new List.Query{ActivityId = Guid.Parse(activityId)});
+            var httpContext = Context.GetHttpContext(); 
+            var activityId = httpContext.Request.Query["activityId"];//get the activity Id from httpcontext
+            await Groups.AddToGroupAsync(Context.ConnectionId, activityId); //make the conetion...
+            var result = await _mediator.Send(new List.Query{ActivityId = Guid.Parse(activityId)}); //sent the list of coment to user
             await Clients.Caller.SendAsync("LoadComments", result.Value);
         }
     }
