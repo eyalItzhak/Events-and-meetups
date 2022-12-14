@@ -11,5 +11,11 @@ namespace Application.Activities
         public string DisplayName { get; set; }
         public string Bio { get; set; }
         public string Image { get; set; }
+
+        public bool Following{ get; set; } //if currently login user Following this specific user.
+
+        public int FollowersCount { get; set; }
+
+        public int FollowingCount { get; set; }
     }
 }

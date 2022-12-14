@@ -175,16 +175,16 @@ export default class ActivityStore {
         }
     }
 
-    // updateAttendeeFollowing = (username: string) => {
-    //     this.activityRegistry.forEach(activity => {
-    //         activity.attendees.forEach(attendee => {
-    //             if (attendee.username === username) {
-    //                 attendee.following ? attendee.followersCount-- : attendee.followersCount++;
-    //                 attendee.following = !attendee.following;
-    //             }
-    //         })
-    //     })
-    // }
+    updateAttendeeFollowing = (username: string) => {
+        this.activityRegistry.forEach(activity => { 
+            activity.attendees.forEach(attendee => {
+                if (attendee.username === username) { // if this is the user we want to follow/unfollow
+                    attendee.following ? attendee.followersCount-- : attendee.followersCount++; //if we alrady follow => now we want to unfollow else follow now
+                    attendee.following = !attendee.following;  //change the status (follow/unfollow)
+                }
+            })
+        })
+    }
 
     clearSelectedActivity = () => {
         this.selectedActivity = undefined;
