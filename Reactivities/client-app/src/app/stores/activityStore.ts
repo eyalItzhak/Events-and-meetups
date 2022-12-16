@@ -1,9 +1,11 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, reaction, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Activity, ActivityFormValues } from "../models/activity";
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 import { store } from "./store";
 import { Profile } from "../models/profile";
+import { Pagination, PagingParams } from "../models/pagination";
+
 
 export default class ActivityStore {
     activityRegistry = new Map<string, Activity>();
@@ -12,8 +14,71 @@ export default class ActivityStore {
     loading = false;
     loadingInitial = false;
 
+    pagination: Pagination | null = null;
+    pagingParams = new PagingParams();
+
+    predicate = new Map().set("all", true);
+
     constructor() {
         makeAutoObservable(this)
+
+        reaction(
+            () => this.predicate.keys(), //when user change is filtering option do....
+            () => {
+                this.pagingParams = new PagingParams(); //1. create new PagingParams
+                this.activityRegistry.clear();   //2.clear all activity on page
+                this.loadActivities();          //3.load activities with user filter
+            }
+        )
+    }
+
+    setPagingParmas = (pagingParams: PagingParams) => {
+        this.pagingParams = pagingParams;
+    }
+
+    setPredicate = (predicate: string, value: string | Date) => {
+        const restPredicate = () => {
+            this.predicate.forEach((value, key) => {
+                if (key !== 'startDate') this.predicate.delete(key);
+            })
+        }
+        switch (predicate) {
+            case 'all':
+                restPredicate();
+                this.predicate.set('all', true);
+                break;
+
+            case 'isGoing':
+                restPredicate();
+                this.predicate.set('isGoing', true);
+                break;
+
+            case 'isHost':
+                restPredicate();
+                this.predicate.set('isHost', true);
+                break
+
+            case 'startDate':
+                this.predicate.delete('startDate');
+                this.predicate.set('startDate', value);
+
+
+
+        }
+    }
+
+    get axiosParams() { //for axios => and this paramters to header query when http to server.
+        const params = new URLSearchParams();
+        params.append("pageNumber", this.pagingParams.pageNumber.toString());
+        params.append("pageSize", this.pagingParams.pageSize.toString());
+        this.predicate.forEach((value, key) => {
+            if (key === 'startDate') {
+                params.append(key, (value as Date).toISOString())
+            } else {
+                params.append(key, value);
+            }
+        })
+        return params;
     }
 
     get activitiesByDate() {
@@ -27,22 +92,27 @@ export default class ActivityStore {
                 const date = format(activity.date!, 'dd MMM yyyy');
                 activities[date] = activities[date] ? [...activities[date], activity] : [activity];
                 return activities;
-            }, {} as {[key: string]: Activity[]})
+            }, {} as { [key: string]: Activity[] })
         )
     }
 
     loadActivities = async () => {
         this.loadingInitial = true;
         try {
-            const activities = await agent.Activities.list();
-            activities.forEach(activity => {
+            const result = await agent.Activities.list(this.axiosParams);
+            result.data.forEach(activity => {
                 this.setActivity(activity);
             })
+            this.setPagination(result.pagination);
             this.setLoadingInitial(false);
         } catch (error) {
             console.log(error);
             this.setLoadingInitial(false);
         }
+    }
+
+    setPagination = (pagination: Pagination) => {
+        this.pagination = pagination;
     }
 
     loadActivity = async (id: string) => {
@@ -110,10 +180,10 @@ export default class ActivityStore {
             await agent.Activities.update(activity);
             runInAction(() => {
                 if (activity.id) {
-                    let updatedActivity = {...this.getActivity(activity.id), ...activity}
+                    let updatedActivity = { ...this.getActivity(activity.id), ...activity }
                     this.activityRegistry.set(activity.id, updatedActivity as Activity);
                     this.selectedActivity = updatedActivity as Activity;
-                } 
+                }
             })
         } catch (error) {
             console.log(error);
@@ -143,7 +213,7 @@ export default class ActivityStore {
             await agent.Activities.attend(this.selectedActivity!.id);
             runInAction(() => {
                 if (this.selectedActivity?.isGoing) {
-                    this.selectedActivity.attendees = 
+                    this.selectedActivity.attendees =
                         this.selectedActivity.attendees?.filter(a => a.username !== user?.username);
                     this.selectedActivity.isGoing = false;
                 } else {
@@ -176,7 +246,7 @@ export default class ActivityStore {
     }
 
     updateAttendeeFollowing = (username: string) => {
-        this.activityRegistry.forEach(activity => { 
+        this.activityRegistry.forEach(activity => {
             activity.attendees.forEach(attendee => {
                 if (attendee.username === username) { // if this is the user we want to follow/unfollow
                     attendee.following ? attendee.followersCount-- : attendee.followersCount++; //if we alrady follow => now we want to unfollow else follow now
