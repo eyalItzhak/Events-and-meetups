@@ -14,29 +14,29 @@ export default class CommentStore {
     createHubConnection = (activityId: string) => {
         if (store.activityStore.selectedActivity) {
             this.hubConnection = new HubConnectionBuilder()
-                .withUrl('http://localhost:5000/chat?activityId=' + activityId, {
+                .withUrl(process.env.REACT_APP_CHAT_URL + '?activityId=' + activityId, {
                     accessTokenFactory: () => store.userStore.user?.token!
                 })
                 .withAutomaticReconnect()
                 .configureLogging(LogLevel.Information)
                 .build();
 
-            this.hubConnection.start().catch(error => console.log('Error establishing the connection: ', error));
+            this.hubConnection.start().catch(error => console.log('Error establishing connection: ', error));
 
             this.hubConnection.on('LoadComments', (comments: ChatComment[]) => {
                 runInAction(() => {
                     comments.forEach(comment => {
-                        comment.createdAt = new Date(comment.createdAt + 'Z');
-                    })
-                    this.comments = comments
+                        comment.createdAt = new Date(comment.createdAt);
+                    });
+                    this.comments = comments;
                 });
-            })
+            });
 
-            this.hubConnection.on('ReceiveComment', (comment: ChatComment) => {
+            this.hubConnection.on('ReceiveComment', comment => {
                 runInAction(() => {
                     comment.createdAt = new Date(comment.createdAt);
-                    this.comments.unshift(comment)
-                });
+                    this.comments.unshift(comment);
+                })
             })
         }
     }
@@ -59,3 +59,4 @@ export default class CommentStore {
         }
     }
 }
+

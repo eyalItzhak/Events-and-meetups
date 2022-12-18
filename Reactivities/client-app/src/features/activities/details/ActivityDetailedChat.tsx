@@ -1,6 +1,6 @@
 import { Formik, Form, Field, FieldProps } from 'formik';
 import { observer } from 'mobx-react-lite'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Segment, Header, Comment, Loader } from 'semantic-ui-react'
 import { useStore } from '../../../app/stores/store';
