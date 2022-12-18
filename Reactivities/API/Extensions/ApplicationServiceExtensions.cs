@@ -1,13 +1,12 @@
 using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
-using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Infrastructure.Photos;
 using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Persistence;
 
@@ -42,9 +41,15 @@ namespace API.Extensions
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+            
             services.AddSignalR((o => {
             o.EnableDetailedErrors = true;
             }));
+
+          services.AddFluentValidationAutoValidation();
+          services.AddValidatorsFromAssemblyContaining<Create>();
+
+
 
             return services;
         }
