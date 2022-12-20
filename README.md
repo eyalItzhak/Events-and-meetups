@@ -1,5 +1,8 @@
 
-# Events and meetups (React, .NET 5, Mobx)
+# Events and meetups (React 18, .NET 7, Mobx)
+
+for client project 
+https://github.com/eyalItzhak/Event-and-meetup-Client
 
 ### Work-in-Progress!
 
