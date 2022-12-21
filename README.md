@@ -19,6 +19,14 @@ Opening the terminal in the API folder and running the command:
 ```bash
 dotnet watch run
 ```
+
+You need to define a configuration file for connecting to cloudinary (for the image upload feature).
+
+<img src=https://user-images.githubusercontent.com/62293316/209008740-d17612f7-e168-4001-aa96-11e535741629.png width=50% height=50%>
+
+It is necessary to replace all the 'X' in your account details from the cloudinary website.
+
+
     
 ## Installation - Client 
 
@@ -42,6 +50,7 @@ Then run
 ```bash
 npm start
 ```
+
 
 The client server side should open on port 3000.
 ## Deployment
