@@ -1,61 +1,84 @@
 
-# Events and meetups (React 18, .NET 7, Mobx)
 
-for client project 
-https://github.com/eyalItzhak/Event-and-meetup-Client
+## About
 
-### Work-in-Progress!
+An application with features of a social network in order to organize and manage meetings/events.
 
-Web application for managing events and meetings.
-Some things have not yet been implemented, so not all features are currently working.
-Among the things that have been implemented:
+React 18, .NET 7, Mobx  are used in the project.
 
-1.Creating databases for meetings and for users.
 
-2.Registration and connection forms with Valdation.
+client side repository
+[Links](https://github.com/eyalItzhak/Event-and-meetup-Client)
 
-3.Event creation forms with Valdation.
+## Installation - Server 
 
-4.user session.
-
-5.manage application state with mobx
-
-6.Setting up a .NET server
-
-7.Management of "problematic" requests
-
-and more...
-
- 
- # Run project.
- 
- ## Server side:
-
-Make sure that dotnet 5 is downloaded and installed on the computer. 
+Make sure that dotnet 7 is downloaded and installed on the computer.
 
 Opening the terminal in the API folder and running the command:
-##### dotnet watch run
 
-## Client side:
+```bash
+dotnet watch run
+```
+    
+## Installation - Client 
 
-Open a terminal in the client-app folder and run the 
-##### npm install 
+
+
+client side repository
+[Links](https://github.com/eyalItzhak/Event-and-meetup-Client)
+
+Node.js 16.15.0 was used.
+
+Open a terminal in the client-app folder and run the
+
+```bash
+npm install
+```
+
 command to download all the relevant files.
 
 Then run
-##### npm start 
-for the client side.
 
-# the project.
+```bash
+npm start
+```
 
-for login info :
+The client server side should open on port 3000.
+## Deployment
 
-email => bob@test.com
+The site is working and you can get an impression of it (link in releases).
 
-password => Pa$$w0rd
+Extra configuration was done beyond the git files in order to upload the website to fly.io such as switching from sqlite to postgresql and dockerizing the application.
+
+The client side runs on the production build files.
+
+
+#### to login:
+
+Any of the following users are welcome to use:
+
+bob@test.com
+
+tom@test.com
+
+jane@test.com
+
+jerry@test.com
+
+password=Pa$$w0rd
 
 
 
+## Features
+
+- User profile with the option to follow other users, upload photos and more.
+- Live chat for the participants of the activity.
+- Filters for finding the activity.
+- Errors handler
+- more...
+
+
+## Screenshot
 #### The opening page, when the user is not logged in is what he will see. Otherwise, he will be offered to go straight to the meeting list.
 
 ![image](https://user-images.githubusercontent.com/62293316/204667492-4e2020fe-f76b-436b-8a3b-1cf53f7ca973.png)
@@ -68,16 +91,15 @@ password => Pa$$w0rd
 
 
 #### main page
-![image](https://user-images.githubusercontent.com/62293316/204668029-199e3bc2-171a-44a0-be01-935d51dc452c.png)
+![image](https://user-images.githubusercontent.com/62293316/208905863-4d54e072-3c8f-4a2d-a3e8-06b6b39be958.png)
 
-#### The appointment creation form.
+#### The meeting creation form.
 
-![image](https://user-images.githubusercontent.com/62293316/204668161-44e51efa-7745-4e1b-a874-613c196dc387.png)
-
+![image](https://user-images.githubusercontent.com/62293316/208906517-7adbc86a-cbc2-4408-95b7-96a393f26ca5.png)
 
 #### Meeting details and an option to edit an existing meeting
 
-![image](https://user-images.githubusercontent.com/62293316/204668219-69c54e84-d5f1-41fd-99db-2d1c9da5641d.png)
+![image](https://user-images.githubusercontent.com/62293316/208906706-c3368ec1-964a-473f-bbce-8c217e5f88ab.png)
 
 #### Error checking page => exists for testing
 
