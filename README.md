@@ -2,6 +2,9 @@
 
 ## About
 
+Run site -
+https://myreactivities.fly.dev/
+
 An application with features of a social network in order to organize and manage meetings/events.
 
 React 18, .NET 7, Mobx  are used in the project.
